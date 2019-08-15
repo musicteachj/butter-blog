@@ -1,11 +1,15 @@
 # butter-blog
+Blog template using Vue CLI(with router)
+Vuetify Framework
+Butter.js/Butter CMS
+Jest testing
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+<!-- ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
@@ -31,4 +35,4 @@ npm run test:unit
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/). -->
