@@ -73,6 +73,21 @@ export default {
     return {
 
     }
+  },
+  methods: {
+    isOdd(num) {
+      return num % 2;
+    }
+  },
+  computed: {
+
+  },
+  created() {
+
   }
 }
 </script>
+
+<style scoped>
+
+</style>
