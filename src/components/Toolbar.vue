@@ -5,21 +5,14 @@
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items>
-        <v-btn text>Link 1</v-btn>
-        <v-btn text>Link 2</v-btn>
-        <v-btn text>Link 3</v-btn>
-      </v-toolbar-items>
-
       <template v-if="$vuetify.breakpoint.smAndUp">
-        <v-btn icon>
-          <v-icon>mdi-export-variant</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-delete-circle</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-plus-circle</v-icon>
+        <v-btn 
+          v-for="(i, index) in icons" 
+          :key="index" 
+          icon
+          :href="i.href"
+        >
+          <v-icon color="">{{i.iconName}}</v-icon>
         </v-btn>
       </template>
     </v-toolbar>
@@ -30,7 +23,12 @@
 export default {
   data() {
     return {
-      
+      icons: [
+        {iconName: 'mdi-facebook', href: 'https://www.facebook.com'},
+        {iconName: 'mdi-twitter', href: 'https://www.twitter.com'},
+        {iconName: 'mdi-pinterest', href: 'https://www.twitter.com'},
+        {iconName: 'mdi-instagram', href: 'https://www.twitter.com'},
+      ]
     }
   }
 }
