@@ -2,9 +2,7 @@
   <div id="blogPost">
     <Toolbar/>
     <Parallax/>
-    <v-container>
-      <h1 class="display-3">Blog Post</h1>
-    </v-container>
+    <h1 class="display-3">Blog Post</h1>
   </div>
 </template>
 

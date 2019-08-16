@@ -2,13 +2,67 @@
   <div id="blog">
     <Toolbar/>
     <Parallax/>
-    <h1 class="display-4">Blog Home</h1>
+    <v-container>
+      <h1 class="display-4">Blog Home</h1>
+
+      <div>
+        <v-layout>
+          <v-flex xs12>
+            <v-card flat>
+              <v-container grid-list-md fluid>
+                <v-layout
+                  class="line"
+                  v-for="(post, index) in posts"
+                  :key="post.slug + '_' + index"
+                  row
+                  wrap
+                >
+                  <v-flex xs6 d-flex>
+                    <!-- Blog 1 Card 1 -->
+                      <!-- IF -->
+                        <v-card v-if="isOdd(index)" flat tile style="margin-right:20px">
+                          <div class="boxTwoImage">
+                            <img class="featuredImage" :src="post.featured_image" alt=""/>
+                          </div>
+                        </v-card>
+                      <!-- ELSE -->
+                        <v-card v-else id="blog1Card1" flat tile style="margin-right:20px">
+                          <h1>{{post.title}}</h1>
+                          <p>{{post.author.first_name}} / {{moment(post.published).format("ll")}}</p>
+                          <p>
+                            {{post.summary}}
+                          </p>
+                          <div>
+                            <v-btn
+                              :to="'/blogHome/' + post.slug"
+                              flat
+                              type="div"
+                              class="blogLinks">
+                                Read More
+                            </v-btn>
+                            <v-icon class="arrow">keyboard_arrow_right</v-icon>
+                            <v-icon class="arrow arrow2"> keyboard_arrow_right</v-icon>
+                          </div>
+                        </v-card>
+                    <!-- End Blog Card 1 -->
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </div>
+
+    </v-container>
   </div>
 </template>
 
 <script>
 import Toolbar from '../components/Toolbar'
 import Parallax from '../components/Parallax'
+
+import { butter } from '@/buttercms'
+const moment = require('moment');
 
 export default {
   components: {
