@@ -85,7 +85,7 @@
         <v-pagination
           color=""
           circle
-          @input="pageGetPosts"
+          @input="pagGetPosts"
           v-model="page"
           :length="2"/>
       </div>
@@ -117,13 +117,38 @@ export default {
   methods: {
     isOdd(num) {
       return num % 2;
+    },
+    getPosts(page) {
+      butter.post.list({
+        page: this.page,
+        page_size: 2
+      }).then((res) => {
+        this.posts = res.data.data
+      })
+    },
+    getCategories() {
+      butter.category.list().then((res) => {})
+    },
+    getPostsByCategory() {
+      butter.category.retreive('test-category-slug', {
+        include: 'recent-posts'
+      }).then((res) => {})
     }
   },
   computed: {
-
+    pagGetPosts(page) {
+      butter.post.list({
+        page: this.page,
+        page_size: 2
+      }).then((res) => {
+        this.posts = res.data.data
+      })
+    }
   },
   created() {
-
+    this.getPosts();
+    this.getCategories();
+    this.getPostsByCategory();
   }
 }
 </script>
