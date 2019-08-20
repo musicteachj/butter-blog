@@ -14,7 +14,7 @@ export default new Router({
       component: BlogHome
     },
     {
-      path: '/post',
+      path: '/:slug',
       name: 'blogPost',
       // route level code-splitting
       // this generates a separate chunk (post.[hash].js) for this route
