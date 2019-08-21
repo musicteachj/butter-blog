@@ -44,8 +44,11 @@
 </template>
 
 <script>
+import lodash from 'lodash'
+
 import Toolbar from '../components/Toolbar'
 import Parallax from '../components/Parallax'
+import { resolve } from 'dns';
 
 export default {
   components: {
@@ -54,7 +57,83 @@ export default {
   },
   data() {
     return {
+      relatedArticles: [],
+      relatedArticlesOne: [],
+      relatedArticlesTwo: [],
+      relatedArticlesThree: [],
+      posts: {}
+    }
+  },
+  methods: {
+    // Get Post
+    getPost() {
+      return butter.post.retrieve(this.$route.params.slug)
+        .then((res) => {
+          this.post = res.data
+          resolve()
+        }).catch((res) => {
 
+        })
+    },
+    // Get post by first category
+    getPostByCategoryOne(post) {
+      return butter.category.retrieve(this.post.data.categories[0].slug, {
+        include: 'recent_posts'
+      })
+      .then((res) => {
+        this.relatedArticlesOne = res.data.data.recent_posts;
+      })
+    },
+    // Get post by second category
+    getPostByCategoryTwo(post) {
+      if (this.post.data.categories[1] != undefined) {
+        return butter.category.retrieve(this.post.data.categories[1].slug, {
+          include: 'recent_posts'
+        })
+        .then((res) => {
+          this.relatedArticlesTwo = res.data.data.recent_posts;
+        })
+      } else {
+        return butter.category.retrieve(this.post.data.categories[0].slug, {
+          include: 'recent_posts'
+        })
+        .then((res) => {
+          this.relatedArticlesThree = res.data.data.recent_posts;
+        })
+      }
+    },
+    // Get post by third category
+    getPostByCategoryThree(post) {
+      if (this.post.data.categories[2] != undefined) {
+        return butter.category.retrieve(this.post.data.categories[2].slug, {
+          include: 'recent_posts'
+        })
+        .then((res) => {
+          this.relatedArticlesThree = res.data.data.recent_posts;
+        })
+      } else if (this.post.data.categories[2] && this.post.data.categories[1] != undefined) {
+         return butter.category.retrieve(this.post.data.categories[0].slug, {
+          include: 'recent_posts'
+        })
+        .then((res) => {
+          this.relatedArticlesThree = res.data.data.recent_posts;
+        })
+      } else {
+         return butter.category.retrieve(this.post.data.categories[0].slug, {
+          include: 'recent_posts'
+        })
+        .then((res) => {
+          this.relatedArticlesThree = res.data.data.recent_posts;
+        })
+      }
+    },
+    // Merge arrays
+    mergeArrays() {
+      let combinedArr = [];
+      combinedArr.push(this.relatedArticlesOne, this.relatedArticlesTwo, this.relatedArticlesThree)
+      let flatten = _.flatten(combinedArr);
+      let uniq = _.uniqBy(flatten, 'title');
+      this.relatedArticles = uniq;
     }
   }
 }
