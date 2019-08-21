@@ -135,6 +135,30 @@ export default {
       let uniq = _.uniqBy(flatten, 'title');
       this.relatedArticles = uniq;
     }
-  }
+  },
+  watch: {
+    $route(to, from) {
+      this.getPost()
+    }
+  },
+  created() {
+    // Chaining methods, get posts by category
+    this.getPost().then(
+      (success) => {
+        this.getPostByCategoryOne().then(
+          (s) => {
+            this.getPostByCategoryTwo().then(
+              (s) => {
+                this.getPostByCategoryThree().then(
+                  (s) => {
+                    this.mergeArrays();
+                  })
+              })
+          })
+      },
+      (fail) => {
+        console.log(fail)
+      })
+  },
 }
 </script>
