@@ -26,7 +26,7 @@
                         active-class="blogLinks"
                         v-for="(item, index) in relatedArticles" :key="index"
                         :to="'/' + item.slug"
-                        :flat="true"
+                        text
                         type="div"
                         class="bloglinks">
                         <span class="blogTitles">{{ item.title }}</span>
@@ -45,10 +45,11 @@
 
 <script>
 import lodash from 'lodash'
+import { butter } from '@/buttercms'
 
 import Toolbar from '../components/Toolbar'
 import Parallax from '../components/Parallax'
-import { resolve } from 'dns';
+// import { resolve } from 'dns';
 
 export default {
   components: {
@@ -61,7 +62,7 @@ export default {
       relatedArticlesOne: [],
       relatedArticlesTwo: [],
       relatedArticlesThree: [],
-      posts: {}
+      post: {}
     }
   },
   methods: {

@@ -3,8 +3,6 @@
     <Toolbar/>
     <Parallax/>
     <v-container>
-      <h1 class="display-4">Blog Home</h1>
-
       <div>
         <v-layout>
           <v-flex xs12>
@@ -34,8 +32,8 @@
                           </p>
                           <div>
                             <v-btn
-                              :to="'/blogHome/' + post.slug"
-                              flat
+                              :to="'/' + post.slug"
+                              text
                               type="div"
                               class="blogLinks">
                                 Read More
@@ -57,8 +55,8 @@
                           </p>
                           <div>
                             <v-btn
-                              :to="'/blogHome/' + post.slug"
-                              flat
+                              :to="'/' + post.slug"
+                              text
                               type="div"
                               class="blogLinks">
                                 Read More
@@ -130,7 +128,7 @@ export default {
       butter.category.list().then((res) => {})
     },
     getPostsByCategory() {
-      butter.category.retreive('test-category-slug', {
+      butter.category.retrieve('test-category-slug', {
         include: 'recent-posts'
       }).then((res) => {})
     }
