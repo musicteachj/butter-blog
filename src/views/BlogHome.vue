@@ -157,25 +157,6 @@ export default {
   background-color: white;
 }
 
-.blogImageContainer {
-  background-color: white;
-  height: 350px;
-  width: 100%;
-}
-
-.blogMainImage {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: fill !important;
-}
-
-.blogHeading {
-  margin-top: 6% !important;
-  text-shadow: 3px 3px black;
-  font-size: 4.5vw !important;
-  font-family: 'Lato', sans-serif !important;
-}
-
 .line {
   padding-bottom: 2%;
   padding-top: 2%;
