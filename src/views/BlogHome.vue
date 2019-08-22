@@ -38,8 +38,8 @@
                               class="blogLinks">
                                 Read More
                             </v-btn>
-                            <v-icon class="arrow">keyboard_arrow_right</v-icon>
-                            <v-icon class="arrow arrow2"> keyboard_arrow_right</v-icon>
+                            <!-- <v-icon class="arrow">keyboard_arrow_right</v-icon>
+                            <v-icon class="arrow arrow2"> keyboard_arrow_right</v-icon> -->
                           </div>
                         </v-card>
                     <!-- End Blog Card 1 -->
@@ -61,8 +61,8 @@
                               class="blogLinks">
                                 Read More
                             </v-btn>
-                            <v-icon class="arrow">keyboard_arrow_right</v-icon>
-                            <v-icon class="arrow arrow2"> keyboard_arrow_right</v-icon>
+                            <!-- <v-icon class="arrow">keyboard_arrow_right</v-icon>
+                            <v-icon class="arrow arrow2"> keyboard_arrow_right</v-icon> -->
                           </div>
                         </v-card>
                       <!-- ELSE -->
@@ -81,7 +81,7 @@
       </div>
       <div class="text-xs-center">
         <v-pagination
-          color=""
+          color="green"
           circle
           @input="pagGetPosts"
           v-model="page"
@@ -152,5 +152,56 @@ export default {
 </script>
 
 <style scoped>
+#blog {
+  font-family: 'Lato', sans-serif !important;
+  background-color: white;
+}
 
+.line {
+  padding-bottom: 2%;
+  padding-top: 2%;
+  border-bottom: 1px solid lightgrey;
+}
+
+#blogCard1, #blogCard2 {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.blogLinks {
+  color: green;
+  text-decoration: none;
+  text-transform: none !important;
+  margin-left: -15px;
+  margin-top: 1px;
+}
+
+.blogLinks:hover {
+  text-decoration: underline;
+  background-color: none !important;
+}
+
+.blogLinks:hover:before {
+  background-color: transparent;
+}
+
+.arrow {
+  color: green;
+  font-size: 15px;
+  margin-left: -25px;
+}
+
+.arrow2 {
+  margin-left: -10px;
+}
+
+.boxTwoImage {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.featuredImage {
+  width: 100%;
+  height: 100%;
+}
 </style>

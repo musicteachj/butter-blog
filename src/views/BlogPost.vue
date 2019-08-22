@@ -1,5 +1,5 @@
 <template>
-  <div id="blogPost">
+  <div id="blogPost2">
     <Toolbar/>
     <Parallax/>
     <v-container>
@@ -163,3 +163,68 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+#blogPost2 {
+  font-family: 'Lato', sans-serif !important;
+  background-color: white;
+}
+
+.featuredImg {
+  width: 100% !important;
+  padding-right: 3%;
+}
+
+.right-card {
+  text-align: center;
+}
+
+.line {
+  border-right: 1px solid lightgray;
+}
+
+.content {
+  padding-right: 3%;
+}
+
+.relatedContainer {
+  position: sticky;
+  top: 10px;
+  position: -webkit-sticky;
+}
+
+.blogLinksHeader {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.blogLinks {
+  width: 100%;
+  color: green;
+  text-decoration: none;
+  text-transform: none !important;
+  background-color: transparent;
+}
+
+.blogLinks:hover {
+  text-decoration: underline;
+  background-color: transparent !important;
+}
+
+.blogLinks:hover:before {
+  background-color: transparent;
+}
+
+.blogTitles {
+  white-space: normal;
+  font-size: 16px;
+}
+</style>
+
+<style>
+.content img {
+  max-width: 100%;
+}
+</style>
